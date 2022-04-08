@@ -3,13 +3,13 @@ from customer.forms import CustomerForm
 from customer.models import Customer  
 
 
-def customer(request):  
+def addCustomer(request):  
     if request.method == "POST":  
         form = CustomerForm(request.POST)  
         if form.is_valid():  
             try:  
                 form.save()  
-                return redirect('/show')  
+                return redirect('show/')  
             except:  
                 pass  
     else:  
@@ -29,10 +29,10 @@ def update(request, id):
     form = CustomerForm(request.POST, instance = customer)  
     if form.is_valid():  
         form.save()  
-        return redirect("/show")  
+        return redirect("show/")  
     return render(request, 'edit.html', {'customer': customer})
 
 def destroy(request, id):  
     customer = Customer.objects.get(id=id)  
     customer.delete()  
-    return redirect("/show")
+    return redirect("show/")

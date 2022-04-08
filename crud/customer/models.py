@@ -2,7 +2,7 @@ from random import choices
 from django.db import models
 
 class Customer(models.Model):  
-    cid = models.CharField(max_length=20)  
+    cid = models.CharField(max_length=11)
     cname = models.CharField(max_length=100)  
     csurname = models.CharField(max_length=100)
     cphone = models.CharField(max_length=100)
