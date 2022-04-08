@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect  
 from customer.forms import CustomerForm  
-from customer.models import Customer  
-
+from customer.models import Customer
 
 def createCustomer(request):
     if request.method == "POST":
@@ -17,7 +16,7 @@ def createCustomer(request):
     return render(request,"create.html", {'form':form})
 
 def readCustomer(request):
-    customers = Customer.objects.all()  
+    customers = Customer.objects.all().order_by('-id')
     return render(request,"read.html", {'customers':customers})
 
 def editCustomer(request, id):

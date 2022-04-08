@@ -1,7 +1,8 @@
 from random import choices
+from django.conf import settings
 from django.db import models
 
-class Customer(models.Model):  
+class Customer(models.Model):
     cid = models.CharField(max_length=11)
     cname = models.CharField(max_length=100)  
     csurname = models.CharField(max_length=100)

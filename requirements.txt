@@ -1,3 +1,4 @@
 Django==4.0.3
 postgres==4.0
 fontawesomefree==6.1.1
+pylint==2.13.5
