@@ -1,39 +1,44 @@
 <!DOCTYPE html>  
 <html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Employee Records</title>  
-     {% load staticfiles %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
-</head>  
-<body>  
-<table class="table table-striped table-bordered table-sm">  
-    <thead class="thead-dark">  
-    <tr>  
-        <th>Employee ID</th>  
-        <th>Employee Name</th>  
-        <th>Employee Email</th>  
-        <th>Employee Contact</th>  
-        <th>Actions</th>  
-    </tr>  
-    </thead>  
-    <tbody>  
-{% for employee in employees %}  
-    <tr>  
-        <td>{{ employee.eid }}</td>  
-        <td>{{ employee.ename }}</td>  
-        <td>{{ employee.eemail }}</td>  
-        <td>{{ employee.econtact }}</td>  
-        <td>  
-            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ employee.id }}">Delete</a>  
-        </td>  
-    </tr>  
-{% endfor %}  
-    </tbody>  
-</table>  
-<br>  
-<br>  
-<center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
-</body>  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Customer Records</title>  
+        {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+    </head>  
+    <body>  
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+            <tr>  
+                <th>Customer ID</th>  
+                <th>Customer Name</th>  
+                <th>Customer Surname</th>  
+                <th>Customer Phone</th>
+                <th>Customer City</th>
+                <th>Customer District</th>
+                <th>Actions</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            {% for customer in customers %}  
+            <tr>  
+                <td>{{ customer.cid }}</td>
+                <td>{{ customer.cname }}</td>
+                <td>{{ customer.csurname }}</td>
+                <td>{{ customer.cphone }}</td>
+                <td>{{ customer.ccity }}</td>
+                <td>{{ customer.cdistrict }}</td>
+                <td>  
+                    <a href="/edit/{{ customer.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                    <a href="/delete/{{ customer.id }}">Delete</a>  
+                </td>  
+            </tr>  
+            {% endfor %}  
+        </tbody>  
+    </table>  
+    <br><br>  
+    <center>
+        <a href="/customer" class="btn btn-primary">Add New Record</a>
+    </center>  
+    </body>  
 </html>  
