@@ -3,36 +3,36 @@ from customer.forms import CustomerForm
 from customer.models import Customer  
 
 
-def addCustomer(request):  
-    if request.method == "POST":  
+def createCustomer(request):
+    if request.method == "POST":
         form = CustomerForm(request.POST)  
         if form.is_valid():  
-            try:  
+            try:
                 form.save()  
-                return redirect('show/')  
+                return redirect(readCustomer)  
             except:  
-                pass  
-    else:  
+                pass
+    else:
         form = CustomerForm()  
-    return render(request,'index.html',{'form':form})
+    return render(request,"create.html", {'form':form})
 
-def show(request):  
+def readCustomer(request):
     customers = Customer.objects.all()  
-    return render(request,"show.html",{'customers':customers})
+    return render(request,"read.html", {'customers':customers})
 
-def edit(request, id):  
+def editCustomer(request, id):
     customer = Customer.objects.get(id=id)  
-    return render(request,'edit.html', {'customer':customer})
+    return render(request,'update.html', {'customer':customer})
 
-def update(request, id):  
+def updateCustomer(request, id):
     customer = Customer.objects.get(id=id)  
     form = CustomerForm(request.POST, instance = customer)  
-    if form.is_valid():  
-        form.save()  
-        return redirect("show/")  
-    return render(request, 'edit.html', {'customer': customer})
+    if form.is_valid():
+        form.save()
+        return redirect(readCustomer)  
+    return render(request, 'update.html', {'customer': customer})
 
-def destroy(request, id):  
+def destroyCustomer(request, id):
     customer = Customer.objects.get(id=id)  
     customer.delete()  
-    return redirect("show/")
+    return redirect(readCustomer)

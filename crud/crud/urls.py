@@ -3,10 +3,10 @@ from django.urls import path
 from customer import views
 
 urlpatterns = [
+    path('', views.readCustomer),
+    path('create', views.createCustomer),
+    path('edit/<int:id>', views.editCustomer),
+    path('update/<int:id>', views.updateCustomer),
+    path('delete/<int:id>', views.destroyCustomer),
     path('admin/', admin.site.urls),
-    path('add', views.addCustomer),  
-    path('show',views.show),
-    path('edit/<int:id>', views.edit),  
-    path('update/<int:id>', views.update),  
-    path('delete/<int:id>', views.destroy),
 ]
